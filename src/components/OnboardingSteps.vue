@@ -2,8 +2,7 @@
   <div class="root">
       <div class="container">
           <ul class="progressbar">
-                <li class="active" v-for="i in actStep" :key="i"> </li>
-                <li v-for="i in numStep-actStep" :key="i"> </li>
+            <li v-for="i in numStep" :key="i" :class="isActive(i)"> </li>
          </ul>
       </div>
   </div>
@@ -13,12 +12,20 @@
 export default {
   props: {
     'numStep': Number,
-    'actStep': Number
+    'actStep': Number,
     },
+  methods: {
+    isActive: function(i) {
+      if (i<=this.actStep)
+        return 'active';
+      else
+        return '';
+    }
+  },
   data () {
     return {
     }
-  },
+  }
 }
 </script>
 
