@@ -33,7 +33,7 @@ export default {
 
 .container{
     width: 100%;
-    position: absolute;
+    position: relative;
     z-index: 1;
     margin-top: 20px;
 }
@@ -43,19 +43,19 @@ export default {
 }
 .progressbar li{
   float: left;
-  width: 20%;
+  width: 33%;
   position: relative;
   text-align: center;
 }
 .progressbar li:before{
   content:counter(step);
   counter-increment: step;
-  width: 30px;
+  width: 50px;
   height: 30px;
   border: 2px solid #bebebe;
   display: block;
   margin: 0 auto 10px auto;
-  border-radius: 50%;
+  border-radius: 10%;
   line-height: 27px;
   background: white;
   color: #bebebe;

@@ -5,16 +5,24 @@
         <onboarding-steps v-bind:numStep="numStep" v-bind:actStep="actStep"></onboarding-steps>
       </div>
     </div>
-    <button v-if="actStep > 1" v-on:click="prevStep">Prev</button>
-    <button v-if="actStep < numStep" v-on:click="nextStep">Next</button>
+    <div class="eingabe" v-if="actStep===2">
+      <text-feld title="Podcast Titel" />
+      <text-feld title="Podcast Untertitel" />
+    </div>
+    <div class="nav">
+      <button v-if="actStep > 1" v-on:click="prevStep">Prev</button>
+      <button v-if="actStep < numStep" v-on:click="nextStep">Next</button>
+    </div>
   </div>
 </template>
 
 <script>
 import OnboardingSteps from './components/OnboardingSteps.vue'
+import TextFeld from './components/TextFeld.vue'
 export default {
   components:{
-    OnboardingSteps
+    OnboardingSteps,
+    TextFeld
   },
   methods: {
     prevStep: function() {
@@ -30,13 +38,20 @@ export default {
   },
   data () {
     return {
-      actStep: 4,
-      numStep: 5
+      actStep: 1,
+      numStep: 3
     }
   }
 }
 </script>
 
 <style scoped>
+.box {
+  position: relative;
+}
+.nav {
+  position: bottom;
+  margin: 30px;
+}
 </style>
 
