@@ -4,11 +4,16 @@
       <div class="item step">
         <onboarding-steps v-bind:numStep="numStep" v-bind:actStep="actStep"></onboarding-steps>
       </div>
-      <div class="item item-1" v-if="actStep===2">
-        <text-feld title="Podcast Titel" />
+      <div class="item item-1" v-if="actStep===1">
+        <p> Welcome to the Podlove Publisher Onboarding </p>
       </div>
-      <div class="item item-2" v-if="actStep===2">
-        <text-feld title="Podcast Untertitel" />
+      <div class="item item-1" v-if="actStep===2">
+        <onboarding-basic v-bind:title="title" v-bind:subtitle="subtitle"/>
+      </div>
+      <div class="item item-1" v-if="actStep===3">
+        <p> Daten fuer den Publisher: </p>
+        <p> title {{title}} </p>
+        <p> subtitle {{subtitle}} </p>
       </div>
       <div class="item prev">
         <button v-if="actStep > 1" v-on:click="prevStep">Prev</button>
@@ -22,12 +27,12 @@
 </template>
 
 <script>
+import OnboardingBasic from './components/OnboardingBasic.vue';
 import OnboardingSteps from './components/OnboardingSteps.vue'
-import TextFeld from './components/TextFeld.vue'
 export default {
   components:{
     OnboardingSteps,
-    TextFeld
+    OnboardingBasic
   },
   methods: {
     prevStep: function() {
@@ -44,7 +49,9 @@ export default {
   data () {
     return {
       actStep: 1,
-      numStep: 3
+      numStep: 3,
+      title: 'text',
+      subtitle: '',
     }
   }
 }
@@ -63,11 +70,7 @@ export default {
 }
 
 .item-1 {
-    grid-column: 1 / span 3;
-}
-
-.item-2 {
-    grid-column: 4 / span 9;
+    grid-column: 1 / span 12;
 }
 
 .prev {
