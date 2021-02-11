@@ -3,7 +3,7 @@
         <label for="nme">
             <span>{{eingabe}}</span>
         </label>
-        <input type="text" name="name" id="nme" required autocomplete="off" />
+        <input @input="changed" type="text" name="title" />
     </form>
 </template>
 
@@ -12,8 +12,9 @@ export default {
     props: {
         'eingabe': String
     },
-    data () {
-        return {
+    methods: {
+        changed: function(event) {
+            this.$store.commit("changeTitle", event.target.value)
         }
     }
 }

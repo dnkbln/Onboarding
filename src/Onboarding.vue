@@ -12,7 +12,7 @@
       </div>
       <div class="item item-1" v-if="actStep===3">
         <p> Daten fuer den Publisher: </p>
-        <p> title {{title}} </p>
+        <p> title {{$store.getters.title}} </p>
         <p> subtitle {{subtitle}} </p>
       </div>
       <div class="item prev">
